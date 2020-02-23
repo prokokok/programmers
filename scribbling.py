@@ -23,3 +23,25 @@ def permutations(numbers):
 
 comb = combinations('1234')
 permut = permutations('1234')
+
+numbers = '110'
+
+import itertools
+
+numbers = list(numbers)
+numbers_set = set()
+print(numbers)
+print('======')
+
+for i in range(1,len(numbers)+1):
+        print(i)
+        res = list(map(''.join,itertools.permutations(numbers,i)))
+        print(res)
+
+        for num in res:
+            num = num.replace('^0', '')
+            num = int(num)
+
+            if num not in numbers_set and num != 0:
+                numbers_set.add(num)
+
