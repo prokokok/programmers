@@ -1,5 +1,5 @@
 # M1
-# 재귀 bfs
+# 재귀 dfs
 
 def check(numbers, target):
     if not numbers:
