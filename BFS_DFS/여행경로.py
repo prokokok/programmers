@@ -1,3 +1,4 @@
+# dfs dictionary 인접행렬
 def solution(tickets):
     routes = {}
 

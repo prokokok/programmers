@@ -1,4 +1,5 @@
 # M1
+# 재귀 bfs
 
 def check(numbers, target):
     if not numbers:

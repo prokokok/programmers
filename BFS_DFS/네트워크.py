@@ -1,5 +1,5 @@
 # M1
-
+# 인접 행렬 사용 bfs
 def dfs(n, computers, start, visited):
     stack = []
     stack.append(start)

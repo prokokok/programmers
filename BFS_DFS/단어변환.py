@@ -42,6 +42,7 @@
 #############
 
 # 정답
+# dictionary 인접 행렬 dfs
 
 from collections import deque
 
