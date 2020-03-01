@@ -1,3 +1,32 @@
+# Demi
+
+
+def solution(board, nums):
+    N = len(board)
+    row_bingo_counts = [0] * N
+    col_bingo_counts = [0] * N
+    diagonal_bingo_counts = [0] * 2
+
+    nums = set(nums)
+    for i, row in enumerate(board):
+        for j, number in enumerate(row):
+            if number in nums:
+                row_bingo_counts[i] += 1
+                col_bingo_counts[j] += 1
+
+            if i == j:
+                diagonal_bingo_counts[0] += 1
+            if i + j == N -1:
+                diagonal_bingo_counts[1] += 1
+    answer = 0
+    answer += row_bingo_counts.count(N)
+    answer += col_bingo_counts.count(N)
+    answer += diagonal_bingo_counts(N)
+
+    return answer
+
+########################
+
 # 정답
 
 def check_diag(a, n):
@@ -70,6 +99,8 @@ def solution(board, nums):
     answer = r + c + d
     return answer
 
+
+########################
 ## 시간 초과
 
 def check_diag(a, n):
