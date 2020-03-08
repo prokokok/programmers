@@ -1,49 +1,39 @@
-# 정답
-# 예시 그림이 잘못되어 당황한 case
-
 def solution(m, n, puddles):
-    temp = n
-    n = m
-    m = temp
+    # initialzing coordinates with default -1
+    NOT_VISITED = -1
+    coordinates = [[NOT_VISITED] * n for _ in range(m)]
 
-    coordinates = [[0] * m for _ in range(n)]
-
+    # Assigning 1 to starting point
     coordinates[0][0] = 1
 
+    # Initializing puddles
     if puddles:
         for x, y in puddles:
-            coordinates[x - 1][y - 1] = -1
+            coordinates[x - 1][y - 1] = 0
 
-    for y in range(1, m):
-        if coordinates[0][y] == -1:
+    # Initializing 0th row
+    for y in range(1, n):
+        if coordinates[0][y] == 0:
             continue
-        elif coordinates[0][y] == 0 and coordinates[0][y - 1] == -1:
-            coordinates[0][y] = -1
         else:
             coordinates[0][y] = coordinates[0][y - 1]
 
-    for x in range(1, n):
-        if coordinates[x][0] == -1:
+    # Initializing 0th column
+    for x in range(1, m):
+        if coordinates[x][0] == 0:
             continue
-        elif coordinates[x][0] == 0 and coordinates[x - 1][0] == -1:
-            coordinates[x][0] = -1
         else:
             coordinates[x][0] = coordinates[x - 1][0]
 
-    for x in range(1, n):
-        for y in range(1, m):
-            if coordinates[x][y] == -1:
+    # Calculating paths
+    for x in range(1, m):
+        for y in range(1, n):
+            if coordinates[x][y] == 0:
                 continue
             else:
-                up = coordinates[x - 1][y] if coordinates[x - 1][y] != -1 else 0
-                left = coordinates[x][y - 1] if coordinates[x][y - 1] != -1 else 0
+                coordinates[x][y] = coordinates[x - 1][y] + coordinates[x][y - 1]
 
-                coordinates[x][y] = up + left
-
-    for cor in coordinates:
-        print(cor)
-
-    return coordinates[n - 1][m - 1] % 1000000007
+    return coordinates[m - 1][n - 1] % 1000000007
 
 # 정답2 - 재귀
 
@@ -65,4 +55,4 @@ def solution(m, n, puddles):
 if __name__ == "__main__":
     m = 4
     n = 3
-    puddles = [[2, 2]]
+    puddles = [[2, 2],[1,2],[3,1]]
