@@ -110,6 +110,28 @@ q.append((begin, 0))
 # (단어, level)
 ```
 
+## 버스여행.py (DFS)
+
+### 전체 풀이법 
+ 
+M1) Floyd 
+
+M2) adjacency list + dfs
+
+### 상세 풀이법
+
+M1) 주어진 변수들 중에 adjacency matrix가 있으므로 Floyd 사용
+
+M2) stack를 활용한 dfs를구현 + visited로 check    
+
+
+### Hint1 - M1) Floyd 
+```python
+k, i, j 
+ik kj ij
+```
+
+
 
 
 
