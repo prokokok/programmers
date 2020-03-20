@@ -151,19 +151,24 @@ for t in tickets:
     routes[t[0]] = routes.get(t[0],[]) + [t[1]]
 ```
 
-### Hint1
-```python
-routes = {}
-
-    for t in tickets:
-        routes[t[0]] = routes.get(t[0],[]) + [t[1]]
-```
-
-### Hint2 왜 'reverse = True' 일까 생각 (코드마다 다를수 있음)
+### Hint2 왜 'reverse = True' 일까 고민 (코드마다 다를수 있음)
 ```python
 for r in routes:
         routes[r].sort(reverse=True)
 ```
+
+## 타겟넘버.py (DFS)
+
+### 전체 풀이법 
+ 
+1) DFS 재귀
+
+### 상세 풀이법
+
+1) 재귀로 모든 경우의 수를 구한다.
+
+
+### Hint : 재귀
 
 
 
