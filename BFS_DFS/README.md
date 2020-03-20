@@ -122,7 +122,7 @@ M2) adjacency list + dfs
 
 M1) 주어진 변수들 중에 adjacency matrix가 있으므로 Floyd 사용
 
-M2) stack를 활용한 dfs를구현 + visited로 check    
+M2) stack를 활용한 dfs를 구현 + visited로 check    
 
 
 ### Hint1 - M1) Floyd 
@@ -130,7 +130,40 @@ M2) stack를 활용한 dfs를구현 + visited로 check
 k, i, j 
 ik kj ij
 ```
+## 여행경로.py (DFS)
 
+### 전체 풀이법 
+ 
+1) 스택을 활용한 DFS
+
+### 상세 풀이법
+
+1) dictionary로 인접 리스트 구현
+2) 만일 가능한 경로가 2개 이상일 경우 알파벳 순서가 앞서는 경로 라는 조건에 주의한
+3) stack를 활용한 dfs를 구현하다
+
+
+### Hint1
+```python
+routes = {}
+
+for t in tickets:
+    routes[t[0]] = routes.get(t[0],[]) + [t[1]]
+```
+
+### Hint1
+```python
+routes = {}
+
+    for t in tickets:
+        routes[t[0]] = routes.get(t[0],[]) + [t[1]]
+```
+
+### Hint2 왜 'reverse = True' 일까 생각 (코드마다 다를수 있음)
+```python
+for r in routes:
+        routes[r].sort(reverse=True)
+```
 
 
 

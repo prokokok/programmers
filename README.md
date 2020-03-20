@@ -2,6 +2,14 @@
 
 -------
 
+## Git Account Check
+
+```
+$ git config user.name
+$ git config user.email
+```
+
+
 ## Git Upload 하기전 Account 바꾸기
 
 ```
