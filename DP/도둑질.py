@@ -1,47 +1,24 @@
-# 정답
-
-def search(index, money, visited, length):
-
-    money_stolen = 0
-    stack = []
-    stack.append(index)
-
-    while stack:
-        house_num = stack.pop()
-        next_house = (house_num + 2) % length
-
-        if visited[house_num] == -1:
-            money_stolen += money[house_num]
-            visited[house_num] = 1
-            next_house_num = (house_num + 1) % length
-            before_house_num = (house_num - 1) % length if house_num > 0 else length - 1
-            visited[next_house_num] = 1
-            visited[before_house_num] = 1
-
-        if visited[next_house] == -1:
-            stack.append(next_house)
-
-    return money_stolen
-
+# M1
 def solution(money):
-    length = len(money)
-    money_stolen = 0
+    dp = [0] * len(money)
+    dp[0] = money[0]
+    dp[1] = max(money[0], money[1])
 
-    for i in range(length):
-        visited = [-1] * length
-        money_stolen = max(money_stolen,search(i, money, visited, length))
+    for i in range(2, len(money)-1):
+        dp[i] = max(dp[i-1], money[i]+dp[i-2])
 
-    return money_stolen
+    dp_2 = [0] * len(money)
+    dp_2[0] = 0
+    dp_2[1] = money[1]
 
-# def solution(money):
-#
-#     stolen_moeny_even = 0
-#     stolen_moeny_odd = 0
-#
-#     for i, m in enumerate(money):
-#         if i % 2 == 0:
-#             stolen_moeny_even += m
-#         else:
-#             stolen_moeny_odd += m
-#
-#     return max(stolen_moeny_even, stolen_moeny_odd)
+    for i in range(2, len(money)):
+        dp_2[i] = max(dp_2[i-1], money[i] + dp_2[i-2])
+
+    return max(max(dp), max(dp_2))
+
+# M2
+
+
+if __name__ == "__main__":
+    money = [1, 2, 3, 1]
+    answer = solution(money)
